@@ -2,7 +2,7 @@ const axios = require('axios');
 const { addOrUpdateCharacter } = require('./dynamo');
 
 const seedData = async () => {
-    const url = 'http://hp-api.herokuapp.com/api/characters';
+    const url = 'https://hp-api.onrender.com/api/characters/students';
     try {
         const { data: characters } = await axios.get(url);
         const characterPromises = characters.map((character, i) =>
@@ -11,7 +11,7 @@ const seedData = async () => {
         await Promise.all(characterPromises);
     } catch (err) {
         console.error(err);
-        console.log('AHHHHHHHHHHH');
+        console.log('Workshop DynamoDB');
     }
 };
 seedData();
